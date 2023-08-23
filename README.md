@@ -48,3 +48,7 @@ Non blovking es programagar evitando bloquear los procesos ejecutando todo de fo
 #### Ciclo de vida de un proceso en Node
 
 ![Alt text](image/callstack.png)
+
+#### Nodemon
+
+https://www.npmjs.com/package/nodemon
