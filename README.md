@@ -37,3 +37,9 @@ Es un entrono de ejecución de javascript construido en el motor v8 de google ch
 - Es sumamente rápido y fácil de configurar
 - Más de 470 mil paquetes disponibles (El ecosistema con más librerías en el mundo)
 - Sí sabes Javascript ya conoces la mayor parte de Node
+
+#### Blocking vs Non Blocking
+
+Non blovking es programagar evitando bloquear los procesos ejecutando todo de forma asíncrona.
+
+(Ejemplo del curso)[https://github.com/Klerith/node-blocking-vs-non-blocking/]
