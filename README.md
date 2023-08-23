@@ -38,17 +38,34 @@ Es un entrono de ejecución de javascript construido en el motor v8 de google ch
 - Más de 470 mil paquetes disponibles (El ecosistema con más librerías en el mundo)
 - Sí sabes Javascript ya conoces la mayor parte de Node
 
-#### Blocking vs Non Blocking
+### Blocking vs Non Blocking
 
 Non blovking es programagar evitando bloquear los procesos ejecutando todo de forma asíncrona.
 
 (Ejemplo del curso)[https://github.com/Klerith/node-blocking-vs-non-blocking/]
 
 
-#### Ciclo de vida de un proceso en Node
+### Ciclo de vida de un proceso en Node
 
 ![Alt text](image/callstack.png)
 
-#### Nodemon
+### Nodemon
 
 https://www.npmjs.com/package/nodemon
+
+## 2-Reforzamiento de los temas necesarios para seguir el curso
+
+### Temas de la sección:
+La sección se enfoca en los siguientes temas:
+
+- Instalación de paquetes mediante npm
+- Reforzamiento de ES6 y ES7
+- Let vs Var
+- Template literales
+- Destructuración
+- Funciones de flecha
+- Callbacks y callbacks en cadena
+- Promesas y promesas en cadena
+- Async y Await
+- Adicionalmente tendremos varias tareas dentro de la sección para prácticar
+
