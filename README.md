@@ -43,3 +43,8 @@ Es un entrono de ejecución de javascript construido en el motor v8 de google ch
 Non blovking es programagar evitando bloquear los procesos ejecutando todo de forma asíncrona.
 
 (Ejemplo del curso)[https://github.com/Klerith/node-blocking-vs-non-blocking/]
+
+
+#### Ciclo de vida de un proceso en Node
+
+![Alt text](image/callstack.png)
