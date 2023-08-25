@@ -69,3 +69,18 @@ La sección se enfoca en los siguientes temas:
 - Async y Await
 - Adicionalmente tendremos varias tareas dentro de la sección para prácticar
 
+## 3-Bases de Node
+
+### Temas de la sección:
+La sección se enfoca en los siguientes temas:
+
+- Requerir información de otros archivos
+- Requerir paquetes
+- Importar archivos personalizados
+- NPM
+- Install
+- Uninstall
+- Package.json
+- Yargs
+- Recibir parámetros por línea de comando
+- Colores para la consola
