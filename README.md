@@ -81,6 +81,7 @@ La sección se enfoca en los siguientes temas:
 - Install
 - Uninstall
 - Package.json
-- Yargs
+- [Yargs](https://www.npmjs.com/package/yargs)
 - Recibir parámetros por línea de comando
-- Colores para la consola
+- [Colores para la consola](https://www.npmjs.com/package/colors)
+
