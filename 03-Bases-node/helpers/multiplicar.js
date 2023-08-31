@@ -1,11 +1,11 @@
 const fs = require('fs')
 const colors = require('colors/safe');
 
-const crearArchivo = async (base = 5, listar = false) => {
+const crearArchivo = async (base = 5, listar = false, limit = 10) => {
   try {
     let salida = ''
 
-    for (let index = 1; index <= 10; index++) {
+    for (let index = 1; index <= limit; index++) {
       salida += `${base} x ${index} = ${base * index}\n`
     }
 
