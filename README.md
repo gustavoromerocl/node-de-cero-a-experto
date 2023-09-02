@@ -96,7 +96,7 @@ Puntualmente sería:
 - stdin
 - stdout
 - Ciclos
-- Inquirer
+- [Inquirer](https://www.npmjs.com/package/inquirer)
 - Clases en JavaScript
 - Archivos JSON
 - Fuertemente async y await
