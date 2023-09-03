@@ -9,7 +9,7 @@ class Tareas {
 
   get listadoArr() {
     const listado = []
-    Object.keys(this._listado).forEach( key => {
+    Object.keys(this._listado).forEach(key => {
       const tarea = this._listado[key]
       listado.push(tarea)
     })
@@ -18,6 +18,11 @@ class Tareas {
 
   constructor() {
     this._listado = {}
+  }
+
+  cargarTareasFromArray(tareas = []) {
+    console.log(tareas);
+    tareas.forEach(tarea => this._listado[tarea.id] = tarea)
   }
 
   crearTarea(desc = '') {

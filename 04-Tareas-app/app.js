@@ -14,10 +14,13 @@ const Tareas = require('./models/tareas')
 const main = async () => {
   console.log('Hola mundo')
   let opt = ''
-  const tareas = new Tareas()
-  const dbData = leerDB()
+  let tareas = new Tareas()
+  let dbData = leerDB()
 
-  if(dbData) tareas = dbData
+  if(dbData) {
+    tareas.cargarTareasFromArray(dbData)
+  }
+
   do {
     opt = await inquirerMenu()
 
