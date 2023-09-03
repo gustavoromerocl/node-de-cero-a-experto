@@ -22,7 +22,7 @@ const main = async () => {
         console.log(desc)
         break;
       case 2:
-        console.log(tareas._listado)
+        console.log(tareas.listadoArr)
         break;
     }
     if (opt !== 0) await pausa()
