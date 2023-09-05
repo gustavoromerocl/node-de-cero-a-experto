@@ -29,6 +29,15 @@ class Tareas {
     const tarea = new Tarea(desc)
     this._listado[tarea.id] = tarea
   }
+
+  listadoCompleto() {
+    this.listadoArr.forEach(({ desc, completaEn }, index) => {
+      const nro = `${++index}`.green
+      completaEn
+        ? console.log(`${nro} ${desc} :: ${'Completado'.green}`)
+        : console.log(`${nro} ${desc} :: ${'Pendiente'.red}`)
+    })
+  }
 }
 
 module.exports = Tareas
