@@ -38,6 +38,21 @@ class Tareas {
         : console.log(`${nro} ${desc} :: ${'Pendiente'.red}`)
     })
   }
+
+  listarPendientesCompletadas(completadas = true) {
+    this.listadoArr
+      .filter(({ completaEn }) =>
+        completadas
+          ? completaEn !== null
+          : completaEn === null
+      )
+      .forEach(({ desc, completaEn }, index) => {
+        const nro = `${++index}`.green
+        completaEn
+          ? console.log(`${nro} ${desc} :: ${'Completado'.green}`)
+          : console.log(`${nro} ${desc} :: ${'Pendiente'.red}`)
+      })
+  }
 }
 
 module.exports = Tareas
