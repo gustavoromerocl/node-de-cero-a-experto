@@ -39,6 +39,27 @@ const questions = [
   }
 ]
 
+const listadoBorrar = async (tareas = []) => {
+  const choices = tareas.map(({id, desc}, index) => {
+    const nro = `${++index}.`.green
+    return {
+      value: id,
+      name: `${nro} ${desc}`
+    }
+  })
+
+  const questions = [
+    {
+      type: 'list',
+      name: 'id',
+      message: 'Borrar',
+      choices
+    }
+  ]
+
+  const { id } = await inquirer.prompt(questions)
+  return id
+}
 const inquirerMenu = async () => {
   console.clear()
   console.log(`===================================`.green)
@@ -61,14 +82,14 @@ const pausa = async () => {
   console.log('\n')
 }
 
-const leerInput = async ( message ) => {
+const leerInput = async (message) => {
   const question = [
     {
       type: 'input',
       name: 'desc',
       message,
-      validate( value ) {
-        if(value.length === 0) {
+      validate(value) {
+        if (value.length === 0) {
           return 'Por favor ingrese un valor'
         }
         return true
@@ -84,5 +105,6 @@ const leerInput = async ( message ) => {
 module.exports = {
   inquirerMenu,
   pausa,
-  leerInput
+  leerInput,
+  listadoBorrar
 }
