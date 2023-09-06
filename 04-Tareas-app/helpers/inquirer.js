@@ -40,7 +40,7 @@ const questions = [
 ]
 
 const listadoBorrar = async (tareas = []) => {
-  const choices = tareas.map(({id, desc}, index) => {
+  const choices = tareas.map(({ id, desc }, index) => {
     const nro = `${++index}.`.green
     return {
       value: id,
@@ -121,10 +121,34 @@ const leerInput = async (message) => {
   return desc
 }
 
+const mostrarListadoChecklist = async (tareas = []) => {
+  const choices = tareas.map(({ id, desc, completaEn }, index) => {
+    const nro = `${++index}.`.green
+    return {
+      value: id,
+      name: `${nro} ${desc}`,
+      checked: (completaEn) ? true : false
+    }
+  })
+
+  const questions = [
+    {
+      type: 'checkbox',
+      name: 'ids',
+      message: 'Selecciones',
+      choices
+    }
+  ]
+
+  const { ids } = await inquirer.prompt(questions)
+  return ids
+}
+
 module.exports = {
   inquirerMenu,
   pausa,
   leerInput,
   listadoBorrar,
-  confirmar
+  confirmar,
+  mostrarListadoChecklist
 }
