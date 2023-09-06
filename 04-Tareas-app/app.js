@@ -1,13 +1,14 @@
 require('colors')
-const { 
+const {
   guardarDB,
-  leerDB 
+  leerDB
 } = require('./helpers/guardarArchivo')
-const { 
-  inquirerMenu, 
+const {
+  inquirerMenu,
   pausa,
   leerInput,
-  listadoBorrar 
+  listadoBorrar,
+  confirmar
 } = require('./helpers/inquirer')
 const Tarea = require('./models/tarea')
 const Tareas = require('./models/tareas')
@@ -18,7 +19,7 @@ const main = async () => {
   let tareas = new Tareas()
   let dbData = leerDB()
 
-  if(dbData) {
+  if (dbData) {
     tareas.cargarTareasFromArray(dbData)
   }
 
@@ -42,8 +43,14 @@ const main = async () => {
         break;
       case 6:
         const id = await listadoBorrar(tareas.listadoArr)
-        console.log('id', id)
-        break
+        if (id !== 0) {
+          const ok = await confirmar('¿Está seguro?')
+          if (ok) {
+            tareas.borrarTarea(id)
+            console.log('Tarea borrada')
+          }
+        }
+        break;
     }
 
     guardarDB(tareas.listadoArr)

@@ -48,6 +48,11 @@ const listadoBorrar = async (tareas = []) => {
     }
   })
 
+  choices.unshift({
+    value: 0,
+    name: '0.'.green + ' Cancelar'
+  })
+
   const questions = [
     {
       type: 'list',
@@ -60,6 +65,20 @@ const listadoBorrar = async (tareas = []) => {
   const { id } = await inquirer.prompt(questions)
   return id
 }
+
+const confirmar = async (message) => {
+  const questions = [
+    {
+      type: 'confirm',
+      name: 'ok',
+      message
+    }
+  ]
+
+  const { ok } = await inquirer.prompt(questions)
+  return ok
+}
+
 const inquirerMenu = async () => {
   console.clear()
   console.log(`===================================`.green)
@@ -106,5 +125,6 @@ module.exports = {
   inquirerMenu,
   pausa,
   leerInput,
-  listadoBorrar
+  listadoBorrar,
+  confirmar
 }
