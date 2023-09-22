@@ -5,7 +5,7 @@ class Busquedas {
   historial = [];
 
   constructor() {
-    
+
   }
 
   get paramsMapBox() {
@@ -16,11 +16,18 @@ class Busquedas {
     }
   }
 
+  get paramsOpenWeather() {
+    return {
+      appid: process.env.OPENWEATHER_KEY,
+      units: 'metric',
+      lang: 'es'
+    }
+  }
   async ciudad(lugar = '') {
     console.log('lugar', lugar)
     try {
       const instance = axios.create({
-        baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${ lugar }.json`,
+        baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json`,
         params: this.paramsMapBox
       })
       const { data } = await instance.get()
@@ -33,6 +40,27 @@ class Busquedas {
       }))
     } catch (error) {
       return []
+    }
+  }
+
+  async climaLugar(lat, lon) {
+    try {
+      const instance = axios.create({
+        baseURL: `https://api.openweathermap.org/data/2.5/weather`,
+        params: { ...this.paramsOpenWeather, lat, lon }
+      })
+
+      const { data } = await instance.get();
+      const { weather, main } = data;
+      console.log('data', data)
+      return {
+        desc: weather[0].description,
+        min: main.temp_min,
+        max: main.temp_max,
+        temp: main.temp
+      }
+    } catch (error) {
+
     }
   }
 }
