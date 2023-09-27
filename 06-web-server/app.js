@@ -1,17 +1,19 @@
-const http = require('http')
+const express = require('express')
+const app = express()
+const port = 8080
 
-http.createServer((req, res) => {
-  res.setHeader('Content-Disposition', 'atachment; filename=lista.csv')
-  res.writeHead(200, { 'Content-Type' : 'application/csv'})
-
-
-  res.write('id, nombre\n')
-  res.write('1, Gustavo\n')
-  res.write('2, Fernando\n')
-  res.write('3, Juan\n')
-  res.write('4, María\n')
-  res.end()
+app.get('/', function (req, res) {
+  res.send('Home page')
 })
-.listen( 8080 )
 
-console.log('Escuchando en el puerto', 8080)
+app.get('/hola-mundo', function (req, res) {
+  res.send('Hello World')
+})
+
+app.get('*', function (req, res) {
+  res.send('Error 404 | Not found')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
