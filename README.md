@@ -134,3 +134,5 @@ Aquí cubriremos varios temas como:
 - Despliegues en Heroku
 - Hacer carpetas públicas en la web
 - Desplegar aplicaciones de Angular y React
+
+## 8: REST Server - Configuraciones iniciales
