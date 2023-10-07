@@ -135,10 +135,29 @@ Aquí cubriremos varios temas como:
 - Hacer carpetas públicas en la web
 - Desplegar aplicaciones de Angular y React
 
-## 8: REST Server - Configuraciones iniciales
+## 7: REST Server - Configuraciones iniciales
 
 ### Respaldo GitHub
 
 git tag -a v1.0.0 "description"
 
 git push --tags
+
+## 8: Alcances del RESTServer y mantenimiento de la colección de usuarios
+
+### Temas de la sección: 
+
+Aquí cubriremos varios temas como: 
+
+- Definir los alcances de nuestro RESTServer
+CRUD
+- Encriptación de contraseñas
+- Validaciones personalizadas
+- Creación de roles
+- Conexiones con MLAB
+- Despliegue de base de datos en la nube
+- Conexión con Robo 3T con base de datos en la nube
+- Configuración de variables de entorno
+- Borrado de archivos
+- Eliminado físico de la base de datos
+- Eliminación por estado en un campo de la colección
