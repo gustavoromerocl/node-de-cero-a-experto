@@ -6,19 +6,22 @@ const usuariosGet = (req, res =  response) => {
   })
 }
 
-const usuariosPut = (req, res =  response) => {
+const usuariosPut = (req, res = response) => {
   res.json({
     msg: 'put API - controlador'
   })
 }
 
-const usuariosPost = (req, res =  response) => {
+const usuariosPost = (req, res = response) => {
+  const { nombre, edad } = req.body
   res.json({
-    msg: 'post API - controlador'
+    msg: 'get API - controlador',
+    nombre,
+    edad
   })
 }
 
-const usuariosDelete = (req, res =  response) => {
+const usuariosDelete = (req, res = response) => {
   res.json({
     msg: 'delete API - controlador'
   })
