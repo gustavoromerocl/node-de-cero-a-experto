@@ -1,14 +1,19 @@
-const { response } = require('express')
+const { response, request } = require('express')
 
-const usuariosGet = (req, res =  response) => {
+const usuariosGet = (req = request, res =  response) => {
+  const { apiKey = 'no api key' } =  req.params
   res.json({
-    msg: 'get API - controlador'
+    msg: 'get API - controlador',
+    apiKey
   })
 }
 
 const usuariosPut = (req, res = response) => {
+  const { id } = req.params
+
   res.json({
-    msg: 'put API - controlador'
+    msg: 'put API - controlador',
+    id
   })
 }
 
