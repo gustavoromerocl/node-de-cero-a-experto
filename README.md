@@ -136,3 +136,9 @@ Aquí cubriremos varios temas como:
 - Desplegar aplicaciones de Angular y React
 
 ## 8: REST Server - Configuraciones iniciales
+
+### Respaldo GitHub
+
+git tag -a v1.0.0 "description"
+
+git push --tags
