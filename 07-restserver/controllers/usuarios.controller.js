@@ -7,12 +7,12 @@ const usuariosGet = async (req = request, res = response) => {
   // const { apiKey = 'no api key' } = req.params
   const { limit = 5, skip = 0 } = req.query;
   const query = { state: true }
-  const [ users, count ] = await Promise.all([
+  const [users, count] = await Promise.all([
     User.find(query)
-    .limit(+limit)
-    .skip(+skip),
+      .limit(+limit)
+      .skip(+skip),
     User.countDocuments(query)
-  ]) 
+  ])
   res.json({ users, count })
 }
 
@@ -49,10 +49,14 @@ const usuariosPost = async (req, res = response) => {
   res.json({ user })
 }
 
-const usuariosDelete = (req, res = response) => {
-  res.json({
-    msg: 'delete API - controlador'
-  })
+const usuariosDelete = async (req, res = response) => {
+  const { id } = req.params
+
+  //Borrado en duro
+  // const user = await User.findByIdAndDelete(id)
+  const user = await User.findByIdAndUpdate(id, { state: false })
+
+  res.json({ user })
 }
 
 module.exports = {
