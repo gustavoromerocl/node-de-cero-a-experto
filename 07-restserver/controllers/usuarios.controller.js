@@ -14,7 +14,7 @@ const usuariosGet = (req = request, res = response) => {
 const usuariosPut = async (req, res = response) => {
   const { id } = req.params
 
-  const { password, google, mail, ...rest } = req.body
+  const { _id, password, google, mail, ...rest } = req.body
   if(password) {
     const salt = bcryptjs.genSaltSync()
     rest.password = bcryptjs.hashSync(password, salt)

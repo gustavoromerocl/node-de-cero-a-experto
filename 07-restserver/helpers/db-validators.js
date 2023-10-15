@@ -10,7 +10,14 @@ const isValidEmail = async (mail = '') => {
   const isEmailExist = await User.findOne({ mail })
   if(isEmailExist) throw new Error('This email already exist')
 }
+
+const isValidUserById = async (id = '') => {
+  const isUserExist = await User.findOne({ id })
+  if(isUserExist) throw new Error('This user id isnt valid')
+}
+
 module.exports = { 
   isValidRole,
-  isValidEmail 
+  isValidEmail,
+  isValidUserById,
 }
