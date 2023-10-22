@@ -6,6 +6,8 @@ const {
   usuariosPost,
   usuariosDelete
 } = require('../controllers/usuarios.controller')
+
+const { ValidateJWT } = require('../middlewares/validation-jwt')
 const { check } = require('express-validator')
 const { validarCampos } = require('../middlewares/validation-pipe')
 
@@ -29,6 +31,7 @@ router.post('/', [
 ], usuariosPost)
 
 router.delete('/:id', [
+  ValidateJWT,
   check('id', 'The id isnt valid').isMongoId().custom(isValidUserById),
   validarCampos
 ], usuariosDelete)
