@@ -176,3 +176,19 @@ Aquí cubriremos varios temas como:
 - Tips importantes para POSTMan
 - Despliegues en Heroku para pruebas en producción
 - Uso de Middleware
+
+## 10: Google Sign-In: Front y Backend
+
+### Temas de la sección: 
+
+Aquí cubriremos varios temas como: 
+
+- Generar API Key de Google
+- Generar API Secret
+- Usar librerías de Google para la validación de tokens
+- Tips importantes en PostMan
+- Despliegues a Heroku
+- Uso del Google SignIn en el Front-End
+- Crear usuarios personalizados en base a respuestas de Google
+
+[Google Docs](https://developers.google.com/identity/gsi/web/guides/overview?hl=es-419)
