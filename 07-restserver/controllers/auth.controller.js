@@ -9,21 +9,21 @@ const login = async (req, res = response) => {
   try {
     const user = await User.findOne({ mail })
 
-    if(!user) {
+    if (!user) {
       return res.status(400).json({
         msg: 'User or passsword isnt valid'
       })
     }
 
-    if(!user.state) {
+    if (!user.state) {
       return res.status(400).json({
         msg: 'User or passsword isnt valid'
       })
     }
 
-    const validPassword = bcryptjs.compareSync( password, user.password );
+    const validPassword = bcryptjs.compareSync(password, user.password);
 
-    if(!validPassword) {
+    if (!validPassword) {
       return res.status(400).json({
         msg: 'User or passsword isnt valid - password'
       })
@@ -46,14 +46,34 @@ const googleSignIn = async (req, res = response) => {
   const { id_token } = req.body
 
   try {
-    const payload =  await googleVerify( id_token )
-    console.log("payload", payload)
+    const { name, picture, email } = await googleVerify(id_token)
+    let user = await User.findOne({ mail: email })
+
+    if (!user) {
+      const data = {
+        fullName: name,
+        mail: email,
+        password: 'password',
+        img: picture,
+        google: true,
+        role: 'USER_ROLE'
+      }
+      user = new User(data)
+      await user.save()
+    }
+
+    if(!user.state) {
+      return res.status(401).json({
+        msg: 'User is unactive'
+      })
+    }
+
     res.json({
-      msg: 'ok',
+      user,
       token: id_token
     })
   } catch (error) {
-    
+    console.log(error)
   }
 
 }
