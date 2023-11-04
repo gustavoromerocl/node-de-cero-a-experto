@@ -192,3 +192,17 @@ Aquí cubriremos varios temas como:
 - Crear usuarios personalizados en base a respuestas de Google
 
 [Google Docs](https://developers.google.com/identity/gsi/web/guides/overview?hl=es-419)
+
+## 11: Categorias y productos 
+
+### Temas de la sección: 
+
+Aquí cubriremos varios temas como: 
+
+- Tareas
+- CRUD de categorías y productos
+- Relaciones
+- Populate
+- Búsquedas
+- Despliegues a producción
+
