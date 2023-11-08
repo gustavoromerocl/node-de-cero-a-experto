@@ -20,13 +20,13 @@ const ProductSchema = Schema({
     type: Number,
     default: 0
   },
-  categoria: {
+  category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
     required: true
   },
   description: {
-    type: string
+    type: String
   },
   available: {
     type: Boolean,
