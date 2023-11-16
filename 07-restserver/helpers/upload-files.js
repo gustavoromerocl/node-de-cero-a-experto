@@ -6,6 +6,7 @@ const uploadFile = (
   validExtensions = ['png', 'jpg', 'jpeg', 'gif'],
   folder = ''
   ) => {
+    console.log("FILE", file);
   return new Promise((resolve, reject) => {
     const splitName = file.name.split('.')
     const fileExtension = splitName[splitName.length - 1]
@@ -16,7 +17,7 @@ const uploadFile = (
 
     const tempName = uuidv4() + '.' + fileExtension
 
-    uploadPath = path.join(__dirname, '../uploads/' + folder + tempName)
+    uploadPath = path.join(__dirname, '../uploads/', folder, tempName)
 
     file.mv(uploadPath, function (err) {
       if (err) {

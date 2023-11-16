@@ -7,11 +7,17 @@ const loadFiles = async (req, res = response) => {
     return;
   }
   console.log('req.files >>>', req.files) // eslint-disable-line
-  const name = await uploadFile(req.files)
-  
-  res.json({
-    name
-  })
+  try {
+    // const name = await uploadFile(req.files, ['txt', 'md', 'png'], 'screenshots')
+    const name = await uploadFile(req.files, undefined, 'imgs')
+
+    res.json({
+      name
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error })
+  }
 }
 
 module.exports = {
