@@ -27,10 +27,21 @@ const isValidProductById = async (id = '') => {
   if(isUserExist) throw new Error('This user id isnt valid')
 }
 
+const isValidCollection = async (collection = '', collections = []) => {
+  const includes = collections.includes(collection)
+
+  if(!includes) {
+    throw new Error(`The collection ${collection} isnt permit`)
+  }
+
+  return true
+}
+
 module.exports = { 
   isValidRole,
   isValidEmail,
   isValidUserById,
   isValidCategoryById,
   isValidProductById,
+  isValidCollection,
 }
