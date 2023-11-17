@@ -59,7 +59,47 @@ const updateImage = async (req, res = response) => {
   res.json(model)
 }
 
+const showImage = async (req, res = response) => {
+  const { id, collection } = req.params;
+
+  let model;
+
+  switch (collection) {
+    case 'users':
+      model = await User.findById(id);
+      if (!model) {
+        return res.status(400).json({
+          msg: 'The user isnt exists'
+        })
+      }
+      break;
+
+    case 'products':
+      model = await Product.findById(id);
+      if (!model) {
+        return res.status(400).json({
+          msg: 'The product isnt exists'
+        })
+      }
+      break;
+
+    default:
+      res.status(400).json({ msg: 'The collection isnt valid' })
+      break;
+  }
+  console.log(model)
+  if (model.img) {
+    const pathImg = path.join(__dirname, '../uploads', collection, model.img)
+    if (fs.existsSync(pathImg)) {
+      return res.sendFile(pathImg)
+    }
+  }
+
+  res.json({ msg: 'whitout placeholder' })
+}
+
 module.exports = {
   loadFiles,
-  updateImage
+  updateImage,
+  showImage
 }
