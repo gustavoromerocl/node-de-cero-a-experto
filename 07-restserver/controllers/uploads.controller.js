@@ -1,5 +1,6 @@
 const { response } = require("express");
 const { uploadFile } = require("../helpers");
+const { User } = require("../models");
 
 const loadFiles = async (req, res = response) => {
   if (!req.files || Object.keys(req.files).length === 0 || !req.files.file) {
@@ -22,7 +23,28 @@ const loadFiles = async (req, res = response) => {
 
 const updateImage = async (req, res = response) => {
   const { id, collection } = req.params;
-  res.json(id, collection)
+
+  let model;
+
+  switch (collection) {
+    case 'users':
+      model = await User.findById(id);
+      if(!model) {
+        return res.status(400).json({
+          msg: 'The user isnt exists'
+        })
+      }
+      break;
+  
+    default:
+      res.status(400).json({msg: 'The collection isnt valid'})
+      break;
+  }
+
+  const filename = await uploadFile(req.files, undefined, collection);
+  model.img = filename
+  await model.save()
+  res.json(model)
 }
 
 module.exports = {
