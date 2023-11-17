@@ -3,10 +3,6 @@ const { uploadFile } = require("../helpers");
 const { User } = require("../models");
 
 const loadFiles = async (req, res = response) => {
-  if (!req.files || Object.keys(req.files).length === 0 || !req.files.file) {
-    res.status(400).json({ msg: 'No files were uploaded.' })
-    return;
-  }
   console.log('req.files >>>', req.files) // eslint-disable-line
   try {
     // const name = await uploadFile(req.files, ['txt', 'md', 'png'], 'screenshots')
