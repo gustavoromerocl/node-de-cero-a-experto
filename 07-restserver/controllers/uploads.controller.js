@@ -87,15 +87,15 @@ const showImage = async (req, res = response) => {
       res.status(400).json({ msg: 'The collection isnt valid' })
       break;
   }
-  console.log(model)
+
   if (model.img) {
     const pathImg = path.join(__dirname, '../uploads', collection, model.img)
     if (fs.existsSync(pathImg)) {
       return res.sendFile(pathImg)
     }
   }
-
-  res.json({ msg: 'whitout placeholder' })
+  const pathImage = path.join(__dirname, '../assests/no-image.jpg')
+  res.sendFile(pathImage)
 }
 
 module.exports = {
