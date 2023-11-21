@@ -36,19 +36,7 @@ class Server {
   }
 
   sockets() {
-    this.io.on('connection', socket => {
-      console.log('client connected !!', socket.id)
-
-      socket.on('disconnect', () => {
-        // console.log('client disconnected', socket.id)
-      })
-
-      socket.on('send-message', (payload, callback) => {
-        const id = 123456
-        callback(id)
-        // this.io.emit('send-message', payload)
-      }) 
-    })
+    this.io.on('connection', socketController)
   }
 
   listen() {
