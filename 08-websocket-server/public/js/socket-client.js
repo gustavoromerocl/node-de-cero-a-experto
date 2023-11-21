@@ -21,6 +21,9 @@ socket.on('disconnect', () => {
   lblOffline.style.display = '';
 });
 
+socket.on('send-message', (payload) => {
+  console.log('!!!', payload)
+})
 btnSend.addEventListener('click', () => {
 
   const message = txtMessage.value

@@ -44,7 +44,7 @@ class Server {
       })
 
       socket.on('send-message', (payload) => {
-        console.log('message received: ', payload)
+        this.io.emit('send-message', payload)
       }) 
     })
   }
