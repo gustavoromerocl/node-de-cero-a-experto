@@ -7,7 +7,8 @@ class Server {
     this.app = express()
     this.port = process.env.PORT
     this.paths = {}
-
+    this.server = require('http').createServer(this.app);
+    this.io = require('socket.io')(this.server);
     //Middlewares
     this.middlewares()
 
@@ -32,7 +33,7 @@ class Server {
   }
 
   listen() {
-    this.app.listen(this.port, () => {
+    this.server.listen(this.port, () => {
       console.log(`Example app listening on port ${this.port}`)
     })
   }
