@@ -14,6 +14,9 @@ class Server {
 
     //routes
     this.routes()
+
+    //sockets
+    this.sockets()
   }
 
   async dbConnect() {
@@ -30,6 +33,16 @@ class Server {
 
   routes() {
     // this.app.use(this.paths.auth, require('../routes/auth.routes'));
+  }
+
+  sockets() {
+    this.io.on('connection', socket => {
+      console.log('client connected !!', socket.id)
+
+      socket.on('disconnect', () => {
+        console.log('client disconnected', socket.id)
+      })
+    })
   }
 
   listen() {
