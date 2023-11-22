@@ -10,7 +10,7 @@ class Ticket {
 
 class TicketControl {
   constructor() {
-    this.last     = 0;
+    this.last     = 0
     this.today    = new Date().getDate()
     this.tickets  = []
     this.lastFour = []

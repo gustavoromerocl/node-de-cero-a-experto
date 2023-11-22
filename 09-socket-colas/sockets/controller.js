@@ -1,25 +1,15 @@
 const { TicketControl } = require("../models/ticket-control");
 
-const ticketControl = new TicketControl
+const ticketControl = new TicketControl()
 
 
 const socketController = (socket) => {
-    
-
-    socket.on('disconnect', () => {});
-
-    socket.on('enviar-mensaje', ( payload, callback ) => {
-        
-        const id = 123456789;
-        callback( id );
-
-        socket.broadcast.emit('enviar-mensaje', payload );
-
+    socket.emit('last-ticket', ticketControl.last)
+    socket.on('next-ticket', ( payload, callback ) => {
+        const next = ticketControl.next();
+        callback(next)
     })
-
 }
-
-
 
 module.exports = {
     socketController
