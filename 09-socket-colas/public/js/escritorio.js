@@ -1,15 +1,20 @@
 //HTML references
 const lbldesktop = document.querySelector('h1')
 const btnNew = document.querySelector('button')
-const searchParams = new URLSearchParams()
+const searchParams = new URLSearchParams(window.location.search)
+const lblticket = document.querySelector('small')
+const divAlert = document.querySelector('.alert')
 
-if(!searchParams.has('escritorio')) {
+if (!searchParams.has('desktop')) {
   window.location = 'index.html'
   throw new Error('El escritorio es obligatorio')
 }
 
-const desktop = searchParams.get('escritorio')
+const desktop = searchParams.get('desktop')
+
+divAlert.style.display = 'none'
 lbldesktop.innerText = desktop
+
 const socket = io();
 
 
@@ -29,6 +34,15 @@ socket.on('last-ticket', (last) => {
 })
 
 btnNew.addEventListener('click', () => {
+  socket.emit('new-ticket', { desktop }, ({ ok, ticket, msg }) => {
+    if (!ok) {
+      lblticket.innerText = 'Nadie.'
+      return divAlert.style.display = ''
+    }
+    lblticket.innerText = 'Ticket' + ticket.number
+  })
+
+  
   // socket.emit('next-ticket', null, (ticket) => {
   //   lblNewTicket.innerText = ticket
   // });

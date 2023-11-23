@@ -52,7 +52,7 @@ class TicketControl {
     return 'Ticket' + ticket.number
   }
 
-  attendTicket() {
+  attendTicket(desktop) {
     if( this.tickets.length === 0 ) {
       return null
     }
