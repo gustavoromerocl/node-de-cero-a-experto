@@ -5,6 +5,8 @@ const ticketControl = new TicketControl()
 
 const socketController = (socket) => {
     socket.emit('last-ticket', ticketControl.last)
+    socket.emit('current-state', ticketControl.lastFour)
+
     socket.on('next-ticket', (payload, callback) => {
         const next = ticketControl.next();
         callback(next)
@@ -20,12 +22,15 @@ const socketController = (socket) => {
         }
 
         const ticket = ticketControl.attendTicket(desktop)
-        if(!ticket) {
+        
+        socket.broadcast.emit('current-state', ticketControl.lastFour)
+
+        if (!ticket) {
             callback({
                 ok: false,
                 msg: 'there are no more tickets'
             })
-        }else {
+        } else {
             callback({
                 ok: true,
                 ticket
