@@ -11,7 +11,8 @@ const socket = io();
 
 
 socket.on('current-state', (payload) => {
-  console.log(payload)
+  const audio = new Audio('./audio/new-ticket.mp3')
+  audio.play()
   const [ticket1, ticket2, ticket3, ticket4] = payload
   if (lblTicket1) {
     lblTicket1.innerText = 'Ticket ' + ticket1.number
