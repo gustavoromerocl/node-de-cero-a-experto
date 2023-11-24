@@ -251,3 +251,23 @@ Asignar Tickets
 Leer Tickets
 Notificaciones 
 En resumen, crearemos una aplicación de cola
+
+## 15: Sockets con autenticación
+
+### Temas de la sección:
+
+A continuación veremos cómo establecer establecer una comunicación con nuestro WebSocket Server, pero validando la autenticación del usuario, y a la vez confirmar que los mensajes enviados por ese usuario son de quien dice ser.
+
+Puntualmente veremos:
+
+- Autenticar Sockets
+- Usar JWT para validar Sockets
+- Headers personalizados para Sockets
+- Implementar el login en el FrontEnd
+- Implementar y usar el GoogleSign in creado
+- Enviar mensajes privados
+- Enviar mensajes a salas
+- Enviar mensajes globales
+
+Es una sección que visualmente no es atractiva, pero les dará todos los fundamentos necesarios para que lo sigan mejorando tanto como deseen.
+
