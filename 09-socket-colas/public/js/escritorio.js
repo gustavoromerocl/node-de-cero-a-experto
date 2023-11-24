@@ -4,6 +4,7 @@ const btnNew = document.querySelector('button')
 const searchParams = new URLSearchParams(window.location.search)
 const lblticket = document.querySelector('small')
 const divAlert = document.querySelector('.alert')
+const lblPendientes = document.querySelector('#lblPendientes')
 
 if (!searchParams.has('desktop')) {
   window.location = 'index.html'
@@ -29,8 +30,8 @@ socket.on('disconnect', () => {
   btnNew.disabled = true
 });
 
-socket.on('last-ticket', (last) => {
-  // lblNewTicket.innerText = 'Ticket ' + last
+socket.on('ticket-pendings', (pendings) => {
+  lblPendientes.innerText = pendings
 })
 
 btnNew.addEventListener('click', () => {
