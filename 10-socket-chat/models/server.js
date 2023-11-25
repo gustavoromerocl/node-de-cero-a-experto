@@ -32,7 +32,6 @@ class Server {
         this.routes();
 
         // sockets
-
         this.sockets();
     }
 

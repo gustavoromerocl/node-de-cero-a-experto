@@ -23,8 +23,8 @@ myForm.addEventListener('submit', ev => {
     headers: { 'Content-Type': 'application/json' }
   })
     .then(res => res.json())
-    .then(data => {
-      console.log(data)
+    .then(({token}) => {
+      localStorage.setItem('token', token)
     })
     .catch(err => {
       console.log(err)

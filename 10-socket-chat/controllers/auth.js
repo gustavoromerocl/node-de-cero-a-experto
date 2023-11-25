@@ -53,6 +53,15 @@ const login = async(req, res = response) => {
 
 }
 
+const renovarToken = async (req, res) => {
+    const { usuario } = req
+
+    const token = await generarJWT(usuario.id)
+    res.json({
+        usuario,
+        token
+    })
+}
 
 const googleSignin = async(req, res = response) => {
 
@@ -108,5 +117,6 @@ const googleSignin = async(req, res = response) => {
 
 module.exports = {
     login,
-    googleSignin
+    googleSignin,
+    renovarToken
 }
