@@ -6,11 +6,11 @@ var url = (window.location.hostname.includes('localhost'))
   : 'https://restserver-curso-fher.herokuapp.com/api/auth/';
 
 // Referencias HTML
-const txtUid     = document.querySelector('#txtUid');
+const txtUid = document.querySelector('#txtUid');
 const txtMensaje = document.querySelector('#txtMensaje');
 const ulUsuarios = document.querySelector('#ulUsuarios');
 const ulMensajes = document.querySelector('#ulMensajes');
-const btnSalir   = document.querySelector('#btnSalir');
+const btnSalir = document.querySelector('#btnSalir');
 
 const validarJWT = async () => {
   const token = localStorage.getItem('token') || ''
@@ -33,7 +33,7 @@ const validarJWT = async () => {
 }
 
 const conectarSocket = async () => {
-  
+
   socket = io({
     'extraHeaders': {
       'x-token': localStorage.getItem('token')
@@ -52,13 +52,29 @@ const conectarSocket = async () => {
     //
   })
 
-  socket.on('usuarios-activos', (payload) => {
-    console.log(payload)
-  })
+  socket.on('usuarios-activos', dibujarUsuarios)
 
   socket.on('mensaje-privado', () => {
     //
   })
+}
+
+const dibujarUsuarios = (usuarios = []) => {
+
+  let usersHtml = '';
+  usuarios.forEach(({ nombre, uid }) => {
+
+    usersHtml += `
+          <li>
+              <p>
+                  <h5 class="text-success"> ${nombre} </h5>
+                  <span class="fs-6 text-muted">${uid}</span>
+              </p>
+          </li>
+      `;
+  });
+
+  ulUsuarios.innerHTML = usersHtml;
 }
 
 const main = async () => {
